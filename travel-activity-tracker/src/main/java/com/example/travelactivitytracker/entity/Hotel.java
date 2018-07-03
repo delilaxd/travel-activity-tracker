@@ -1,12 +1,11 @@
 package com.example.travelactivitytracker.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "hotel")
+@Table(name = "hotels")
 public class Hotel {
 
     @Id
@@ -22,6 +21,10 @@ public class Hotel {
     private double longitude;
 
     private String address;
+
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id")
+    private User userId;
 
     public long getId() {
         return id;
@@ -70,5 +73,24 @@ public class Hotel {
     public void setAddress(String location) {
         this.address = address;
     }
+
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "hotels")
+    private Set<User> users = new HashSet<>();
+
 
 }

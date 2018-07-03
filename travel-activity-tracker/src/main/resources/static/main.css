@@ -1,7 +1,29 @@
-h1{
-	color:#0000FF;
+h1
+{
+    color:#0000FF;
 }
-
-h2{
-	color:#FF0000;
+h2
+{
+    color:#FF0000;
+}
+body
+{
+    margin:0; padding:0;
+}
+#map
+{
+    position:absolute; top:0; bottom:0; width:100%;
+}
+#marker
+{
+    background-image: url('http://www.hotel-r.net/im/hotel/gb/icon-hotel-21.png');
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    border-radius: 25%;
+    cursor: pointer;
+}
+.mapboxgl-popup
+{
+    max-width: 200px;
 }
