@@ -1,4 +1,4 @@
-package com.example.travelactivitytracker.controller;
+package com.example.travelactivitytracker.mvc.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

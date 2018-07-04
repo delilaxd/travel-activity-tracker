@@ -1,11 +1,6 @@
-package com.example.travelactivitytracker.entity.Request;
+package com.example.travelactivitytracker.mvc.dto;
 
-import com.example.travelactivitytracker.entity.Hotel;
-
-import java.util.HashSet;
-import java.util.Set;
-
-public class AddUserRequest {
+public class UserDto {
 
     private String name;
     private String surname;

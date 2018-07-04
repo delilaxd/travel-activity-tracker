@@ -1,8 +1,8 @@
-package com.example.travelactivitytracker.controller;
+package com.example.travelactivitytracker.mvc.controller;
 
-import com.example.travelactivitytracker.entity.Hotel;
-import com.example.travelactivitytracker.entity.Request.AddHotelRequest;
-import com.example.travelactivitytracker.repository.HotelRepository;
+import com.example.travelactivitytracker.db.entity.Hotel;
+import com.example.travelactivitytracker.db.repository.HotelRepository;
+import com.example.travelactivitytracker.mvc.dto.HotelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,27 +18,23 @@ public class HotelController {
     private HotelRepository hotelRepository;
 
     @Autowired
-    public HotelController(HotelRepository hotelRepository)
-    {
+    public HotelController(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Hotel> findAllHotels()
-    {
+    public List<Hotel> findAllHotels() {
         return hotelRepository.findAll();
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public void addHotel (@RequestBody AddHotelRequest addHotelRequest)
-    {
+    public void addHotel(@RequestBody HotelDto hotelDto) {
         Hotel hotel = new Hotel();
-        hotel.setName(addHotelRequest.getName());
-        hotel.setDescription(addHotelRequest.getDescription());
-        hotel.setAddress(addHotelRequest.getAddress());
-        hotel.setLatitude(addHotelRequest.getLatitude());
-        hotel.setLongitude(addHotelRequest.getLongitude());
+        hotel.setName(hotelDto.getName());
+        hotel.setDescription(hotelDto.getDescription());
+        hotel.setAddress(hotelDto.getAddress());
+        hotel.setLatitude(hotelDto.getLatitude());
+        hotel.setLongitude(hotelDto.getLongitude());
         hotelRepository.save(hotel);
-
     }
 }

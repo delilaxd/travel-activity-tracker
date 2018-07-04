@@ -1,6 +1,6 @@
-package com.example.travelactivitytracker.entity.Request;
+package com.example.travelactivitytracker.mvc.dto;
 
-public class AddHotelRequest {
+public class HotelDto {
 
     private String name;
 
