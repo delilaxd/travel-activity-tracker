@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -22,9 +23,12 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
+    @RequestMapping ("/all")
+    public String user (Map<String, Object> model)
+    {
+        List<User> users = (List<User>) userRepository.findAll();
+        model.put("users", users);
+        return "user";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

@@ -11,7 +11,48 @@
     <link rel="stylesheet" th:href="@{/main.css}" href="../../main.css" />
 </head>
 <body>
-    <div id='map'></div>
-    <script type="text/javascript" th:src="@{/main.js}"></script>
+<div id='map'></div>
+
+<script type="text/javascript" th:inline="javascript">
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsaWxheGQiLCJhIjoiY2ppeWhoMGZwMGFscDNxbnp6b3dlNnN2ayJ9.7b-zChShz8ZMMjmY4vS29w';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: [17.80806, 43.34333],
+            zoom: 2
+        });
+
+        var startLong = [];
+        var startLat = [];
+        var endLong = [];
+        var endLat = [];
+
+        //Importing locations from database for hotels and users
+        [# th:each="u : ${users}"]
+            startLong.push ([(${u.longitude})]);
+            startLat.push ([(${u.latitude})]);
+        [/]
+
+        [# th:each="h : ${hotels}"]
+            endLong.push ([(${h.longitude})]);
+            endLat.push ([(${h.latitude})]);
+        [/]
+
+        //Setting markers with icons and popups
+        [# th:each="ho : ${hotels}"]
+            var popup = new mapboxgl.Popup({ offset: 25 })
+                .setText('[(${ho.name})] - ' + '[(${ho.description})]');
+            var el = document.createElement('div');
+            el.id = 'marker';
+            var monument = new Array ([(${ho.longitude})], [(${ho.latitude})]);
+            new mapboxgl.Marker(el)
+                .setLngLat(monument)
+                .setPopup(popup) // sets a popup on this marker
+                .addTo(map);
+        [/]
+    </script>
+<script type="text/javascript"  th:src="@{/main.js}"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/hotel")
@@ -22,9 +23,12 @@ public class HotelController {
         this.hotelRepository = hotelRepository;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<Hotel> findAllHotels() {
-        return hotelRepository.findAll();
+    @RequestMapping ("/all")
+    public String hotel (Map<String, Object> model)
+    {
+        List<Hotel> hotels = (List<Hotel>) hotelRepository.findAll();
+        model.put("hotels", hotels);
+        return "hotel";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

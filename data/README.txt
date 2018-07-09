@@ -1,0 +1,1 @@
+Files users, hotels, user-hotels are in CSV format and are used as data for tables in our database. You only need to import them in PgAdmin.
