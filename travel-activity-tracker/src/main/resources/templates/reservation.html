@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.springframework.org/schema/jdbc">
+<head>
+    <meta charset='utf-8' />
+    <title>Travel activity tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/main.css}" href="../../main.css" />
+</head>
+<body>
+    <h1>Add new reservation</h1>
+
+    <!--<div>
+        <form th:object="${user}" th:action="@{save}" action="#" method="post">
+            </br><h2>User :</h2>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Firstname"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="text" th:field="*{surname}" class="form-control" placeholder="Lastname"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="number" step="any" th:field="*{latitude}" class="form-control" placeholder="Latitude"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="number" step="any" th:field="*{longitude}" class="form-control" placeholder="Longitude"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+
+            <input type="submit" class="btn btn-success" value="save"/>
+        </form>
+
+    </div>-->
+    <div>
+        <form th:object="${hotel}" th:action="@{save}" action="#" method="post">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="Hotel name"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="text" th:field="*{description}" class="form-control" placeholder="Hotel description"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="number" step="any" th:field="*{latitude}" class="form-control" placeholder="Latitude"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="number" step="any" th:field="*{longitude}" class="form-control" placeholder="Longitude"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+            <input type="text" th:field="*{address}" class="form-control" placeholder="Address"/>
+            <div style="clear: both; display:block; height: 10px;"></div>
+
+            <input type="submit" class="btn btn-success" value="save"/>
+        </form>
+
+    </div>
+
+
+</body>
+</html>
