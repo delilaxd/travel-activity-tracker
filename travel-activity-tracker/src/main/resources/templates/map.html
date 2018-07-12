@@ -17,21 +17,22 @@
 
 <script type="text/javascript" th:inline="javascript">
 
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsaWxheGQiLCJhIjoiY2ppeWhoMGZwMGFscDNxbnp6b3dlNnN2ayJ9.7b-zChShz8ZMMjmY4vS29w';
+        mapboxgl.accessToken = 'pk.eyJ1Ijoicm11aGljIiwiYSI6ImNqamlvdGsxYTA5MDgza216bHowNTh5YWMifQ.3gfde_kEy5lQHcM_5H8drQ';
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             center: [-22.765565, 36.29693],
             zoom: 2.1
         });
-        var startLong = [(${startLong})];
-        var startLat = [(${startLat})];
-        var endLong = [(${endLong})];
-        var endLat = [(${endLat})];
+
+        var startLong = [[${startLong}]]
+        var startLat = [[${startLat}]]
+        var endLong = [[${endLong}]]
+        var endLat = [[${endLat}]]
 
         //Setting markers with icons and popups
             var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('[(${name})] - ' + '[(${description})]');
+                .setText([[(${name})]] + ' - ' + [[(${description})]]);
             var el = document.createElement('div');
             el.id = 'marker';
             new mapboxgl.Marker(el)

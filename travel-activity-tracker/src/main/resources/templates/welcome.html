@@ -15,7 +15,7 @@
 
 <script type="text/javascript" th:inline="javascript">
 
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZGVsaWxheGQiLCJhIjoiY2ppeWhoMGZwMGFscDNxbnp6b3dlNnN2ayJ9.7b-zChShz8ZMMjmY4vS29w';
+        mapboxgl.accessToken = 'pk.eyJ1Ijoicm11aGljIiwiYSI6ImNqamlvdGsxYTA5MDgza216bHowNTh5YWMifQ.3gfde_kEy5lQHcM_5H8drQ';
 
         var map = new mapboxgl.Map({
             container: 'map',
@@ -28,30 +28,33 @@
         var startLat = [];
         var endLong = [];
         var endLat = [];
+        var users = [[${users}]];
+        var hotels = [[${hotels}]];
 
         //Importing locations from database for hotels and users
-        [# th:each="u : ${users}"]
-            startLong.push ([(${u.longitude})]);
-            startLat.push ([(${u.latitude})]);
-        [/]
+        users.forEach( function(user) {
+            startLong.push (user.longitude);
+            startLat.push (user.latitude);
+        });
 
-        [# th:each="h : ${hotels}"]
-            endLong.push ([(${h.longitude})]);
-            endLat.push ([(${h.latitude})]);
-        [/]
+        hotels.forEach( function(hotel) {
+            endLong.push (hotel.longitude);
+            endLat.push (hotel.latitude);
+        });
 
         //Setting markers with icons and popups
-        [# th:each="ho : ${hotels}"]
+        hotels.forEach( function(hotel) {
             var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('[(${ho.name})] - ' + '[(${ho.description})]');
+                .setText(hotel.name + ' - ' + hotel.description);
             var el = document.createElement('div');
             el.id = 'marker';
-            var monument = new Array ([(${ho.longitude})], [(${ho.latitude})]);
+            var monument = new Array (hotel.longitude, hotel.latitude);
             new mapboxgl.Marker(el)
                 .setLngLat(monument)
                 .setPopup(popup) // sets a popup on this marker
                 .addTo(map);
-        [/]
+        });
+
     </script>
 <script type="text/javascript"  th:src="@{/admin.js}"></script>
 </body>

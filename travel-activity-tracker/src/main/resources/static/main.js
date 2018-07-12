@@ -1,4 +1,3 @@
-
 // San Francisco
 var origin = new Array (startLong, startLat);
 
