@@ -37,7 +37,7 @@
 					<td><p th:text="${user.longitude}"></p></td>
 					<td><p th:text="${user.latitude}"></p></td>
 					<td><a class="btn button" id="editRoom" th:href="@{/updateUser/}+${user.id}">Edit</a></td>
-					<td><form th:action="@{/users/delete}" method="post" class="delete-form">
+					<td><form th:action="@{/deleteUser}" method="post" class="delete-form">
 						<input style="display:none" name="id" th:value="${user.id}"></input>
 						<input class="btn button" type="submit" value="Delete"></input>
 					</form></td>
@@ -68,7 +68,7 @@
 					<td><p th:text="${hotel.address}"></p></td>
 					<td><p th:text="${hotel.description}"></p></td>
 					<td><a class="btn button" id="editHotel" th:href="@{/updateHotel/}+${hotel.id}">Edit</a></td>
-					<td><form th:action="@{/hotels/delete}" method="post" class="delete-form">
+					<td><form th:action="@{/deleteHotel}" method="post" class="delete-form">
 						<input style="display:none" name="id" th:value="${hotel.id}"></input>
 						<input class="btn button" type="submit" value="Delete"></input>
 					</form></td>

@@ -134,5 +134,21 @@ public class WelcomeController {
         return "updateHotel";
     }
 
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+    public String deleteUser(@RequestParam(value = "id") long id, Model model) {
+
+        userService.delete(id);
+
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/deleteHotel", method = RequestMethod.POST)
+    public String deleteHotel(@RequestParam(value = "id") long id, Model model) {
+
+        hotelService.delete(id);
+
+        return "redirect:/admin";
+    }
+
 }
 
