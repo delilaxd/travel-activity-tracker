@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin view page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="utf-8"></meta>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  
+ 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" th:href="@{/main.css}" href="../../main.css" />
+</head>
+
+<body>
+ 	<div class="container aligndiv">
+		<div class="row">
+			<h2 id="title">Users and hotels</h2>
+		</div>
+
+		<div class="row">
+			<table class="table">
+				<thead>
+				<tr>
+					<th><h4>Username</h4></th>
+					<th><h4>Longitude</h4></th>
+					<th><h4>Latitude</h4></th>
+					<th><h4>Edit</h4></th>
+					<th><h4>Delete</h4></th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr th:each="user : ${users}">
+					<td><p th:text="${user.username}"></p></td>
+					<td><p th:text="${user.longitude}"></p></td>
+					<td><p th:text="${user.latitude}"></p></td>
+					<td><a class="btn button" id="editRoom" th:href="@{/updateUser/}+${user.id}">Edit</a></td>
+					<td><form th:action="@{/users/delete}" method="post" class="delete-form">
+						<input style="display:none" name="id" th:value="${user.id}"></input>
+						<input class="btn button" type="submit" value="Delete"></input>
+					</form></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="row">
+			<table class="table">
+				<thead>
+				<tr>
+					<th><h4>Name</h4></th>
+					<th><h4>Longitude</h4></th>
+					<th><h4>Latitude</h4></th>
+					<th><h4>Address</h4></th>
+					<th><h4>Description</h4></th>
+					<th><h4>Edit</h4></th>
+					<th><h4>Delete</h4></th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<tr th:each="hotel : ${hotels}">
+					<td><p th:text="${hotel.name}"></p></td>
+					<td><p th:text="${hotel.longitude}"></p></td>
+					<td><p th:text="${hotel.latitude}"></p></td>
+					<td><p th:text="${hotel.address}"></p></td>
+					<td><p th:text="${hotel.description}"></p></td>
+					<td><a class="btn button" id="editHotel" th:href="@{/updateHotel/}+${hotel.id}">Edit</a></td>
+					<td><form th:action="@{/hotels/delete}" method="post" class="delete-form">
+						<input style="display:none" name="id" th:value="${hotel.id}"></input>
+						<input class="btn button" type="submit" value="Delete"></input>
+					</form></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

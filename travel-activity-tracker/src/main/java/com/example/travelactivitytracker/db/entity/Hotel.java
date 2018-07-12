@@ -34,6 +34,17 @@ public class Hotel {
     @JoinColumn(name = "user_id")
     private User userId;
 
+    public Hotel() {}
+
+    public Hotel(long id, String address, String description, double longitude, double latitude, String name) {
+        this.id = id;
+        this.address = address;
+        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }

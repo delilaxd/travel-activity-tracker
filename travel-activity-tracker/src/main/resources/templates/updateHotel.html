@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta charset="utf-8"></meta>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+  
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" type="text/css" href="rooms.css"></link>
+  	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/main.css}" href="../../../css/main.css"></link>
+</head>
+
+
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<h2 id="title">Add new hotel</h2>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<form th:action="@{/updateHotel}" method="post">
+				   	<input type="long" name="id" th:value="${hotel.id}" style="display:none;"></input>
+				   	
+				   	<div class="form-group">
+				   		<label for="address">Hotel address</label>
+				   		<input th:required="required" type="text" name="address" id="address" class="form-control" th:value="${hotel.address}" placeholder="Address"></input>
+				   	</div>
+
+					<div class="form-group">
+						<label for="description">Hotel description</label>
+						<input th:required="required" type="text" name="description" id="description" class="form-control" th:value="${hotel.description}" placeholder="Description"></input>
+					</div>
+				   	
+				   	<div class="form-group">
+				   		<label for="longitude">Hotel longitude</label>
+				   		<input th:required="required" type="double" name="longitude" id="longitude" class="form-control" th:value="${hotel.longitude}" placeholder="User longitude"></input>
+				   	</div>
+				   	
+				   	<div class="form-group">
+				   		<label for="latitude">Hotel latitude</label>
+				   		<input th:required="required" type="double" name="latitude" id="latitude" class="form-control" th:value="${hotel.latitude}" placeholder="User latitude"></input>
+				   	</div>
+
+					<div class="form-group">
+						<label for="name">Hotel name</label>
+						<input th:required="required" type="text" name="name" id="name" class="form-control" th:value="${hotel.name}" placeholder="Name"></input>
+					</div>
+				   	
+					<input type="submit" name="submit-edit-room" class="btn button" id="add" value="Update Hotel"></input>
+				</form> 
+			</div>
+		</div>
+	</div>
+</body>
+</html>

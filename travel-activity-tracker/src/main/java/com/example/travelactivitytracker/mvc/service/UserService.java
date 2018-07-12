@@ -7,5 +7,6 @@ public interface UserService {
     Iterable<User> findAll();
     void add(User user);
     User findByUsername(String username);
+    public void update(User user);
     void delete(long id);
 }

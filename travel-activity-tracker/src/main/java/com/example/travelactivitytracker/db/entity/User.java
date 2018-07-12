@@ -29,6 +29,15 @@ public class User {
 
     private double longitude;
 
+    public User() {}
+    public User(long id, String username, double longitude, double latitude) {
+        super();
+        this.id = id;
+        this.username = username;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public long getId() {
         return id;
     }
