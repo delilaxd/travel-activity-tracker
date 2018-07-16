@@ -40,6 +40,11 @@ public class WelcomeController {
         this.hotelRepository = hotelRepository;
     }
 
+    @RequestMapping(value = "/")
+    public String index() {
+        return "index";
+    }
+
     @RequestMapping(value = "/login")
     public String login() {
         return "login";

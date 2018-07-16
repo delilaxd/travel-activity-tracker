@@ -31,13 +31,12 @@
         var users = [[${users}]];
         var hotels = [[${hotels}]];
 
+
         //Importing locations from database for hotels and users
-        users.forEach( function(user) {
-            startLong.push (user.longitude);
-            startLat.push (user.latitude);
-        });
 
         hotels.forEach( function(hotel) {
+            startLong.push (hotel.userId.longitude);
+            startLat.push (hotel.userId.latitude);
             endLong.push (hotel.longitude);
             endLat.push (hotel.latitude);
         });
@@ -56,6 +55,6 @@
         });
 
     </script>
-<script type="text/javascript"  th:src="@{/admin.js}"></script>
+<script type="text/javascript"  th:src="@{/allRoutes.js}"></script>
 </body>
 </html>
